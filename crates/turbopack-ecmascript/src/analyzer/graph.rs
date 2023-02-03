@@ -306,6 +306,8 @@ impl EvalContext {
                 SyntaxContext::empty(),
             )),
 
+            Expr::Await(AwaitExpr { arg, .. }) => self.eval(arg),
+
             Expr::New(..) => JsValue::Unknown(None, "unknown new expression"),
 
             Expr::Seq(e) => {
